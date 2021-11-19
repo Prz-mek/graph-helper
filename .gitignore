@@ -24,3 +24,5 @@
 *.iws
 *.iml
 *.ipr
+
+.vscode
