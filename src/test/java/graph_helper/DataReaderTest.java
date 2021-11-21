@@ -12,7 +12,7 @@ import graph_helper.exceptions.NotNumericError;
 import graph_helper.exceptions.WrongDimensionsError;
 
 public class DataReaderTest {
-    
+
     DataReader dr = new DataReader();
 
     final String DATA = "src\\test\\data\\data";
@@ -47,14 +47,19 @@ public class DataReaderTest {
     }
 
     @Test(expected = DataError.class)
-    public void notSymmetrical(){
+    public void notSymmetrical() {
         dr.getWeightsMatrix(getPath(5));
+    }
+
+    @Test(expected = DataError.class)
+    public void negativeConnections() {
+        dr.getWeightsMatrix(getPath(6));
     }
 
     @Test
     public void correct() {
         int[][] expectedResult = {{0, 2}, {2, 0}};
-        int[][] result = dr.getWeightsMatrix(getPath(6));
+        int[][] result = dr.getWeightsMatrix(getPath(7));
         assertArrayEquals(expectedResult, result);
     }
 
