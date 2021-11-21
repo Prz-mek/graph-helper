@@ -39,13 +39,6 @@ class TspDynamicAlgorithmTest {
     }
 
     @Test
-    public void shouldReturnCombination() {
-        int[] expected = {3, 5, 9, 17, 6, 10, 18, 12, 20, 24};
-        int[] result = TspDynamicAlgorithm.combinations(5, 2).stream().mapToInt(i -> i).toArray();
-        assertArrayEquals(expected, result);
-    }
-
-    @Test
     public void shouldCheckIfCorrectRouteWithWikipediaExample() {
         int[][] weights = {
                 {0, 2, 9, 10},
