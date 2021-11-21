@@ -54,27 +54,45 @@ public class Main {
     }
 
     private static void printPairs(int[][] arr){
-        for(int i = 0; i < arr.length; i++)
-        System.out.println(arr[i][0] + " <-> " + arr[i][1]);
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j<i; j++){
+                if(arr[j][i] != 0){
+                    System.out.println(i + " <-> " + j);
+                }
+            }
+        }
     }
-    public static void main ( String [] arguments ){
+    public static void main ( String [] arguments ) {
         int mode = greetings();
         int[][] matrix = askForFile();
-        switch(mode) {
-            case 1:
-                System.out.println("Najmniejsze drzewo rozpinające dla podanego grafu");
-                MinimalSpanTreeAlgorithm algo1 = new MinimalSpanTreeAlgorithm();
-                int[][] answer1 = algo1.applyAlg(matrix);
-                printPairs(answer1);
-                break;
-            case 2:
+        if (matrix != null){
+            switch (mode) {
+                case 1:
+                    System.out.println("Najmniejsze drzewo rozpinające dla podanego grafu");
+                    MinimalSpanTreeAlgorithm algo1 = new MinimalSpanTreeAlgorithm();
+                    int[][] answer1 = algo1.applyAlg(matrix);
+                    printPairs(answer1);
+                    break;
+                case 2:
 
-            case 3:
-                System.out.println("Rozwiązanie problemu komiwojażera");
-                TspDynamicAlgorithm algo3 = new TspDynamicAlgorithm();
-                int[] answer3 = algo3.applyAlg(matrix);
-                printRoute(answer3);
-                break;
+                case 3:
+                    System.out.println("Rozwiązanie problemu komiwojażera");
+
+                    try {
+                        TspDynamicAlgorithm algo3 = new TspDynamicAlgorithm();
+                        int[] answer3 = algo3.applyAlg(matrix);
+                        printRoute(answer3);
+                    } catch (IllegalArgumentException e){
+                        System.out.println("Macierz nieodpowiednia dla algorytmu. Sprawdź czy:");
+                        System.out.println("-macierz jest kwadratowa");
+                        System.out.println("-macierz nie jest za mała (min. rozmiar to 3x3");
+                        System.out.println("-macierz nie jest za duża (maks. rozmiar to 20x20");
+                        break;
+                    }
+                    break;
+            }
+        } else {
+            System.out.println("Proszę wczytać odpowiedni plik");
         }
     }
 }
