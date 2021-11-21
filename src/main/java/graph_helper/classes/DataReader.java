@@ -34,6 +34,9 @@ public class DataReader implements DataParser {
             for (int j = 0; j < nodes; j++)
                 try {
                     result[i][j] = data.getInt(i * nodes + j);
+                    if (result[i][j] < 0) {
+                        throw new DataError();
+                    }
                     if (i > j && result[i][j] != result[j][i]) {
                         throw new DataError();
                     }
