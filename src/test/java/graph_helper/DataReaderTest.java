@@ -2,6 +2,7 @@ package graph_helper;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import graph_helper.exceptions.DataError;
 import org.json.JSONException;
 import org.junit.Test;
 
@@ -45,10 +46,15 @@ public class DataReaderTest {
         dr.getWeightsMatrix(getPath(4));
     }
 
+    @Test(expected = DataError.class)
+    public void notSymmetrical(){
+        dr.getWeightsMatrix(getPath(5));
+    }
+
     @Test
     public void correct() {
-        int[][] expectedResult = {{1, 2}, {3, 4}};
-        int[][] result = dr.getWeightsMatrix(getPath(5));
+        int[][] expectedResult = {{0, 2}, {2, 0}};
+        int[][] result = dr.getWeightsMatrix(getPath(6));
         assertArrayEquals(expectedResult, result);
     }
 
