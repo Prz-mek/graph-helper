@@ -1,9 +1,6 @@
 package graph_helper.classes;
 
-import graph_helper.exceptions.DataError;
-import graph_helper.exceptions.FileError;
-import graph_helper.exceptions.NotNumericError;
-import graph_helper.exceptions.WrongDimensionsError;
+import graph_helper.exceptions.*;
 import org.json.JSONException;
 
 import java.io.File;
@@ -74,10 +71,23 @@ public class Main {
                     printPairs(answer1);
                     break;
                 case 2:
-
+                    System.out.println("Najkrótsza ścieżka między 2 punktami");
+                    DijkstraAlgorithm algo2 = new DijkstraAlgorithm();
+                    System.out.println("Prosze podać punkt rozpoczynający:");
+                    Scanner scanner = new Scanner(System.in);
+                    int start = scanner.nextInt();
+                    System.out.println("Prosze podać punkt końcowy:");
+                    int end = scanner.nextInt();
+                    try{
+                        int[] answer2 = algo2.applyAlg(matrix, start, end);
+                        printRoute(answer2);
+                    } catch (NoPathError n){
+                        System.out.println("Brak ścieżki pomiędzy dwoma punktami");
+                        break;
+                    }
+                    break;
                 case 3:
                     System.out.println("Rozwiązanie problemu komiwojażera");
-
                     try {
                         TspDynamicAlgorithm algo3 = new TspDynamicAlgorithm();
                         int[] answer3 = algo3.applyAlg(matrix);
