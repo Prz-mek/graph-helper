@@ -19,6 +19,9 @@
 *.tar.gz
 *.rar
 
+### Build ###
+target/
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

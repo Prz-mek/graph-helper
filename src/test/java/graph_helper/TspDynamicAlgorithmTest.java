@@ -39,7 +39,7 @@ class TspDynamicAlgorithmTest {
     }
 
     @Test
-    public void shouldCheckIfCorrectRouteWithWikipediaExample() {
+    public void shouldCheckIfCorrectRouteForFourVertices() {
         int[][] weights = {
                 {0, 2, 9, 10},
                 {1, 0, 6, 4},
@@ -54,7 +54,7 @@ class TspDynamicAlgorithmTest {
     }
 
     @Test
-    public void shouldCheckIfCorrectRouteWithFiveVertices() {
+    public void shouldCheckIfCorrectRouteForFiveVertices() {
         int[][] weights = {
                 {0, 49, 34, 96, 74},
                 {49, 0, 10, 94, 43},
@@ -70,7 +70,7 @@ class TspDynamicAlgorithmTest {
     }
 
     @Test
-    public void shouldCheckIfCorrectRouteWithSixVertices() {
+    public void shouldCheckIfCorrectRouteForSixVertices() {
         int n = 6;
         int[][] weights = new int[n][n];
         for (int i = 0; i < n; i++) {
