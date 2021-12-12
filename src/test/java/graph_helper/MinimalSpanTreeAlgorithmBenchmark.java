@@ -6,11 +6,9 @@ import org.openjdk.jmh.infra.Blackhole;
 
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Fork(value = 3, warmups = 2)
-@Warmup(iterations = 5, time = 150, timeUnit = TimeUnit.MILLISECONDS)
-@Measurement(iterations = 7, time = 200, timeUnit = TimeUnit.MILLISECONDS)
+@Measurement(iterations = 3)
+@Warmup(iterations = 2)
+@Fork(1)
 public class MinimalSpanTreeAlgorithmBenchmark {
     @State(Scope.Benchmark)
     public static class BenchmarkState {
@@ -42,9 +40,12 @@ public class MinimalSpanTreeAlgorithmBenchmark {
         blackhole.consume(state.algorithm.applyAlg(state.threeMatrix));
     }
 
+    @Benchmark
     public void testForFour(Blackhole blackhole, BenchmarkState state) {
         blackhole.consume(state.algorithm.applyAlg(state.fourMatrix));
     }
+
+    @Benchmark
     public void testForFive(Blackhole blackhole, BenchmarkState state) {
         blackhole.consume(state.algorithm.applyAlg(state.fiveMatrix));
     }
