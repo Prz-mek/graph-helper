@@ -1,9 +1,6 @@
 package graph_helper.classes;
 
 import graph_helper.exceptions.*;
-import org.json.JSONException;
-
-import java.io.File;
 import java.util.Scanner;
 
 public class Main {

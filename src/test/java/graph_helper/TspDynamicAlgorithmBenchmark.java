@@ -6,8 +6,6 @@ import graph_helper.classes.TspDynamicAlgorithm;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
-import java.io.IOException;
-
 @Measurement(iterations = 3)
 @Warmup(iterations = 2)
 @Fork(1)
