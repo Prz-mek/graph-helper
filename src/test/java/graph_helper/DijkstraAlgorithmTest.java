@@ -14,7 +14,7 @@ public class DijkstraAlgorithmTest {
     int[][] dataNoPath = { { 0, 2, Integer.MAX_VALUE }, { 4, 0, Integer.MAX_VALUE }, { 1, 5, 0 } };
     int[][] dataNonZeroDiagonal = { { 0, 1, 0 }, { 1, 0, 0 }, { 0, 0, 3 } };
     int[][] dataNotSquareMatrix = { { 0, 2, 9 }, { 4, 0, 6 } };
-    int[][] dataCorrect = { { 0, 2, 9 }, { 4, 0, 6 }, { 1, 5, 0 } };
+    int[][] dataCorrect = { { 0, 8, 4, 18 }, { 10, 0, 25, 4 }, { 11, 3, 0, 15 }, { 8, 9, 20, 0 } };
 
     @Test(expected = NoPathError.class)
     public void noPath() {
@@ -38,8 +38,8 @@ public class DijkstraAlgorithmTest {
 
     @Test
     public void correct() {
-        int[] correctPath = { 0, 1, 2 };
-        int[] actualPath = gsp.applyAlg(dataCorrect, 0, 2);
+        int[] correctPath = { 0, 2, 1, 3 };
+        int[] actualPath = gsp.applyAlg(dataCorrect, 0, 3);
         assertArrayEquals(correctPath, actualPath);
     }
 }

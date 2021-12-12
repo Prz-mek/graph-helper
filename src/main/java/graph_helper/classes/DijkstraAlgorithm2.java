@@ -10,7 +10,7 @@ import graph_helper.exceptions.DataError;
 import graph_helper.exceptions.NoPathError;
 import graph_helper.interfaces.GraphShotestPath;
 
-public class DijkstraAlgorithm implements GraphShotestPath {
+public class DijkstraAlgorithm2 implements GraphShotestPath {
 
     private final int INF = Integer.MAX_VALUE;
     private final int UNDEFINED = -1;
@@ -58,7 +58,8 @@ public class DijkstraAlgorithm implements GraphShotestPath {
                 return prev;
             }
 
-            for (Entry<Integer, Integer> entry : queue) {
+            while (!queue.isEmpty()) {
+                Entry<Integer, Integer> entry = queue.poll();
                 int node = entry.getKey();
                 int alt = weights[min][node] < INF ? dist[min] + weights[min][node] : INF;
                 if (alt < dist[node]) {
@@ -69,7 +70,7 @@ public class DijkstraAlgorithm implements GraphShotestPath {
                     queue_copy.add(entry);
                 }
             }
-            queue = new PriorityQueue<>(queue_copy);
+            queue.addAll(queue_copy);
             queue_copy.clear();
         }
 
